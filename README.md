@@ -1,5 +1,5 @@
 # Insta Post Reply
-> Create your personal GitHub Card
+> React app that gently replies all comments :D
 
 ### Website
 
