@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import GlobalStyles from "./global-styles/";
+import { AppContainer, Main, Section, PostArea, SideArea } from "./layout";
+import { Header, UserInfo } from "./components";
+import { PostContainer } from "./containers";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <AppContainer>
+    <GlobalStyles />
+    <Header />
+    <Main>
+      <Section>
+        <PostArea>
+          <PostContainer />
+        </PostArea>
+        <SideArea>
+          <UserInfo />
+        </SideArea>
+      </Section>
+    </Main>
+  </AppContainer>
+);
 
 export default App;
