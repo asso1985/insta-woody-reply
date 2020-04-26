@@ -32,7 +32,7 @@ const PostCommentForm = ({ onPostComment }) => {
         handleOnSubmitComment(e);
       }
     },
-    [postForm]
+    [handleOnSubmitComment]
   );
 
   const canSabmit = comment.length > 0;
