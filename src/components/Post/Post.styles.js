@@ -9,6 +9,7 @@ const StyledPost = styled.article`
   background-color: #fff;
   margin-left: -1px;
   margin-right: -1px;
+  margin-bottom: 30px;
 `;
 
 const StyledPostHeader = styled.header`
@@ -21,11 +22,12 @@ const StyledPostHeader = styled.header`
 
 const StyledPostContent = styled.div`
   position: relative;
-  widht: 100%;
+  width: 100%;
+  overflow: hidden;
 `;
 
 const StyledPostContentSpacer = styled.div`
-  padding-bottom: 100%;
+  padding-bottom: 55vh;
 `;
 
 const StyledPostContentAbsolute = styled.div`
@@ -37,6 +39,12 @@ const StyledPostContentAbsolute = styled.div`
   img {
     width: 100%;
     object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
   }
 `;
 
@@ -49,7 +57,6 @@ const StyledPostActions = styled.div`
 `;
 
 const StyledPostLikes = styled.div``;
-const StyledPostComments = styled.div``;
 const StyledPostForm = styled.div`
   border-top: 1px solid #efefef;
   padding-left: 16px;
@@ -67,6 +74,5 @@ export {
   StyledPostContentAbsolute,
   StyledPostActions,
   StyledPostLikes,
-  StyledPostComments,
   StyledPostForm,
 };

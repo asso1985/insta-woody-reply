@@ -1,24 +1,27 @@
 import React from "react";
+import { Provider } from "react-redux";
 import GlobalStyles from "./global-styles/";
 import { AppContainer, Main, Section, PostArea, SideArea } from "./layout";
-import { Header, UserInfo } from "./components";
-import { PostContainer } from "./containers";
+import { Header } from "./components";
+import { PostContainer, GuestContainer } from "./containers";
 
-const App = () => (
-  <AppContainer>
-    <GlobalStyles />
-    <Header />
-    <Main>
-      <Section>
-        <PostArea>
-          <PostContainer />
-        </PostArea>
-        <SideArea>
-          <UserInfo />
-        </SideArea>
-      </Section>
-    </Main>
-  </AppContainer>
+const App = ({ store }) => (
+  <Provider store={store}>
+    <AppContainer>
+      <GlobalStyles />
+      <Header />
+      <Main>
+        <Section>
+          <PostArea>
+            <PostContainer />
+          </PostArea>
+          <SideArea>
+            <GuestContainer />
+          </SideArea>
+        </Section>
+      </Main>
+    </AppContainer>
+  </Provider>
 );
 
 export default App;

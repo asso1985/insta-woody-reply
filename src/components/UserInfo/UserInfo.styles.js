@@ -5,17 +5,8 @@ const StyledUserContainer = styled.div`
   align-items: center;
 `;
 
-const StyledUserInfoAvatar = styled.div`
-  height: ${(props) => (props.size === "small" ? "32px" : "50px")};
-  width: ${(props) => (props.size === "small" ? "32px" : "50px")};
-  > img {
-    width: 100%;
-    border-radius: 50%;
-  }
-`;
-
 const StyledUserInfo = styled.div`
-  margin-left: 16px;
+  margin-left: ${(props) => (props.type !== "comment" ? "16px" : 0)};
   display: flex;
   flex-direction: column;
 `;
@@ -34,7 +25,6 @@ const StyledUserDisplayName = styled.div`
 
 export {
   StyledUserContainer,
-  StyledUserInfoAvatar,
   StyledUserInfo,
   StyledUserHandle,
   StyledUserDisplayName,

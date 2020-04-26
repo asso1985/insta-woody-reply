@@ -1,27 +1,33 @@
-import React, { useState, useCallback, useRef } from "react";
+import React, { useState, useCallback, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import {
   StyledPostForm,
   StyledPostFormTextArea,
   StyledPostFormButton,
 } from "./PostCommentForm.styles";
 
-const PostCommentForm = ({ onPostComment }) => {
-  const [comment, SetComment] = useState("");
+import { addComment } from "../../../../actions/comments";
+
+const PostCommentForm = ({ comments, addComment }) => {
+  const [commentText, SetCommentText] = useState("");
+  const { isLoading } = comments;
+  const canSubmit = commentText.length > 0 && !isLoading;
   const postForm = useRef();
+
   const handleOnCommentChange = useCallback(
     (e) => {
-      SetComment(e.target.value);
+      SetCommentText(e.target.value);
     },
-    [SetComment]
+    [SetCommentText]
   );
 
   const handleOnSubmitComment = useCallback(
     (e) => {
       e.preventDefault();
-      onPostComment && onPostComment(comment);
+      canSubmit && addComment({ text: commentText });
     },
-    [onPostComment, comment]
+    [canSubmit, commentText, addComment]
   );
 
   const hanelOnKeyDown = useCallback(
@@ -35,7 +41,12 @@ const PostCommentForm = ({ onPostComment }) => {
     [handleOnSubmitComment]
   );
 
-  const canSabmit = comment.length > 0;
+  useEffect(() => {
+    if (!isLoading) {
+      SetCommentText("");
+    }
+  }, [isLoading]);
+
   return (
     <StyledPostForm ref={postForm} onSubmit={handleOnSubmitComment}>
       <StyledPostFormTextArea
@@ -43,11 +54,12 @@ const PostCommentForm = ({ onPostComment }) => {
         placeholder="Add a comment..."
         autocomplete="off"
         autocorrect="off"
-        value={comment}
+        disabled={comments.isLoading}
+        value={commentText}
         onKeyDown={hanelOnKeyDown}
         onChange={handleOnCommentChange}
       ></StyledPostFormTextArea>
-      <StyledPostFormButton disabled={!canSabmit} type="submit">
+      <StyledPostFormButton disabled={!canSubmit} type="submit">
         Publish
       </StyledPostFormButton>
     </StyledPostForm>
@@ -55,7 +67,15 @@ const PostCommentForm = ({ onPostComment }) => {
 };
 
 PostCommentForm.propTypes = {
-  onPostComment: PropTypes.func,
+  addComment: PropTypes.func,
 };
 
-export default PostCommentForm;
+const mapDispatchToProps = {
+  addComment,
+};
+
+const mapStateToProps = (state) => ({
+  comments: state.comments,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostCommentForm);

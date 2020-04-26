@@ -12,9 +12,9 @@ const Header = () => (
       <StyledHeaderInner>
         <StyledHeaderLogo>
           <img
-            width="103px"
+            width="120px"
             alt="Instagram"
-            src={process.env.PUBLIC_URL + "/logo.png"}
+            src={process.env.PUBLIC_URL + "/logo-post.png"}
           />
         </StyledHeaderLogo>
       </StyledHeaderInner>
