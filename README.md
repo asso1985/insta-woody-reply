@@ -1,5 +1,5 @@
-# Insta Post Reply
-> React app that gently replies all comments :D
+# Insta Woody
+> Woody in you instagram feed, replying with quotes.
 
 ### Website
 

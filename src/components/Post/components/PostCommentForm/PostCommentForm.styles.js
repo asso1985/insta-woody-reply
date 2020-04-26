@@ -27,6 +27,10 @@ const StyledPostFormTextArea = styled.textarea`
   max-height: 80px;
   outline: 0;
   resize: none;
+
+  &:disabled {
+    opacity: 0.6;
+  }
 `;
 
 const StyledPostFormButton = styled.button`

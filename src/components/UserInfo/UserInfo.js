@@ -2,20 +2,27 @@ import React from "react";
 import PropTypes from "prop-types";
 import {
   StyledUserContainer,
-  StyledUserInfoAvatar,
   StyledUserInfo,
   StyledUserHandle,
   StyledUserDisplayName,
 } from "./UserInfo.styles";
 
+import Avatar from "../Avatar";
+
+const AVATAR_SIZE_MAP = {
+  header: "small",
+  comment: "thin",
+  standard: "standard",
+};
+
 const UserInfo = ({ user, type }) => {
-  const avatarSize = type === "header" ? "small" : "standard";
+  const avatarSize = AVATAR_SIZE_MAP[type];
+  const showAvatar = type !== "comment";
   return (
     <StyledUserContainer>
-      <StyledUserInfoAvatar size={avatarSize}>
-        <img alt={user.handle} src={user.avatar} />
-      </StyledUserInfoAvatar>
-      <StyledUserInfo>
+      {showAvatar && <Avatar alt={user.display_name} pic={user.avatar} size={avatarSize} />}
+
+      <StyledUserInfo type={type}>
         <StyledUserHandle type={type}>{user.handle}</StyledUserHandle>
         {type === "standard" && (
           <StyledUserDisplayName>{user.display_name}</StyledUserDisplayName>
@@ -26,7 +33,7 @@ const UserInfo = ({ user, type }) => {
 };
 
 UserInfo.propTypes = {
-  type: PropTypes.oneOf(["header", "standard"]),
+  type: PropTypes.oneOf(["header", "standard", "comment"]),
   user: PropTypes.shape({
     id: PropTypes.string,
     handle: PropTypes.string,
@@ -37,13 +44,6 @@ UserInfo.propTypes = {
 
 UserInfo.defaultProps = {
   type: "standard",
-  user: {
-    id: "UDHUHI$HU",
-    handle: "omarassadi",
-    display_name: "Omar Assadi",
-    avatar:
-      "https://scontent-mxp1-1.cdninstagram.com/v/t51.2885-19/s150x150/87596830_2610629612527261_3519250022854033408_n.jpg?_nc_ht=scontent-mxp1-1.cdninstagram.com&_nc_ohc=wP5p1ehkFkwAX_pNVFD&oh=8acb2afce538fbdd904bc0aaff1f0105&oe=5ECD8837",
-  },
 };
 
 export default UserInfo;
