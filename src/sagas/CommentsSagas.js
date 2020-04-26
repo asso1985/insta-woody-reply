@@ -7,15 +7,9 @@ import {
   ADD_REPLY,
 } from "../constants/action-types";
 
-let QUOTES = [
-  "Life doesn't imitate art, it imitates bad television.",
-  "To you, I'm an atheist. To God, I'm the loyal opposition.",
-  "I just can't listen to any more Wagner, you know...I'm starting to get the urge to conquer Poland.",
-  "Eighty percent of success is showing up.",
-  "I believe there is something out there watching us. Unfortunately, it's the government.",
-  "Life is full of misery, loneliness, and suffering - and it's all over much too soon.",
-  "If only God would give me some clear sign! Like making a large deposit in my name at a Swiss Bank.",
-];
+import quotes from "../quotes.json";
+
+let QUOTES = quotes;
 
 const getRandomQuote = () => {
   if (QUOTES.length === 0) {
