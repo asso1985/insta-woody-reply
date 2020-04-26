@@ -6,9 +6,12 @@ import {
   StyledPostContentSpacer,
   StyledPostContentAbsolute,
   StyledPostActions,
+  StyledPostLikes,
+  StyledPostComments,
 } from "./Post.styles";
 
 import PostButton from "./components/PostButton";
+import PostCommentForm from "./components/PostCommentForm";
 import { UserInfo } from "../";
 
 const Post = () => {
@@ -32,6 +35,9 @@ const Post = () => {
         <PostButton type="comment" />
         <PostButton type="share" />
       </StyledPostActions>
+      <StyledPostLikes></StyledPostLikes>
+      <StyledPostComments></StyledPostComments>
+      <PostCommentForm />
     </StyledPost>
   );
 };

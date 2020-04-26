@@ -9,6 +9,10 @@ const StyledPostButton = styled.button`
   background: 0 0;
   border: 0;
   cursor: pointer;
+
+  &:active, &:focus {
+    outline: 0;
+  }
 `;
 
 export default StyledPostButton;

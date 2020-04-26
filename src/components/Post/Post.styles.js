@@ -48,6 +48,17 @@ const StyledPostActions = styled.div`
   margin-left: -8px;
 `;
 
+const StyledPostLikes = styled.div``;
+const StyledPostComments = styled.div``;
+const StyledPostForm = styled.div`
+  border-top: 1px solid #efefef;
+  padding-left: 16px;
+  padding-right: 16px;
+  font-size: 14px;
+  line-height: 18px;
+  min-height: 56px;
+`;
+
 export {
   StyledPost,
   StyledPostHeader,
@@ -55,4 +66,7 @@ export {
   StyledPostContentSpacer,
   StyledPostContentAbsolute,
   StyledPostActions,
+  StyledPostLikes,
+  StyledPostComments,
+  StyledPostForm,
 };
