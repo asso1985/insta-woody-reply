@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   StyledPost,
   StyledPostHeader,
@@ -15,8 +15,9 @@ import PostComments from "./components/PostComments";
 import { UserInfo } from "../";
 
 const Post = ({ user, comments }) => {
+  const textareaRef = useRef();
   return (
-    <StyledPost>
+    <StyledPost data-cy="post-container">
       <StyledPostHeader>
         <UserInfo user={user} type="header" />
       </StyledPostHeader>
@@ -32,12 +33,17 @@ const Post = ({ user, comments }) => {
       </StyledPostContent>
       <StyledPostActions>
         <PostButton type="like" />
-        <PostButton type="comment" />
+        <PostButton
+          type="comment"
+          onClick={() => {
+            textareaRef.current.focus();
+          }}
+        />
         <PostButton type="share" />
       </StyledPostActions>
       <StyledPostLikes></StyledPostLikes>
       <PostComments comments={comments.list} />
-      <PostCommentForm />
+      <PostCommentForm forwardRef={textareaRef} />
     </StyledPost>
   );
 };

@@ -3,9 +3,13 @@ import PropTypes from "prop-types";
 import SVG_PATHS from "../../../../svg.json";
 import StyledPostButton from "./PostButton.syles";
 
-const PostButton = ({ type, filled, onButtonClick }) => {
+const PostButton = ({ type, filled, onClick, ...rest }) => {
   return (
-    <StyledPostButton onClick={onButtonClick}>
+    <StyledPostButton
+      {...rest}
+      onClick={onClick}
+      data-cy={`post-actions-${type}`}
+    >
       <svg
         fill={!filled ? "#262626" : "rgb(237, 73, 86)"}
         height="24"
@@ -21,7 +25,7 @@ const PostButton = ({ type, filled, onButtonClick }) => {
 PostButton.propTypes = {
   type: PropTypes.oneOf(["comment", "like", "like_full", "share"]),
   filled: PropTypes.bool,
-  onButtonClick: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 PostButton.defaultProps = {
