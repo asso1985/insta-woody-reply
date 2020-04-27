@@ -17,7 +17,7 @@ const Section = styled.section`
   max-width: 935px;
   display: flex;
   flex-direction: column;
-  padding-top: 20px;
+  
 
   @media screen and (min-width: 768px) {
     padding-top: 35px;
@@ -36,8 +36,9 @@ const PostArea = styled.div`
 `;
 
 const SideArea = styled.div`
-  padding: 0 16px;
+  display:none;
   @media screen and (min-width: 768px) {
+    display:block;
     padding: 0;
   }
 `;
