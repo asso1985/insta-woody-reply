@@ -18,7 +18,7 @@ import { Avatar } from "../../../";
 const PostComment = ({ comment }) => {
   const date = formatDistanceToNow(comment.date, { addSuffix: true });
   return (
-    <StyledPostComment key={comment.id}>
+    <StyledPostComment key={comment.id} data-cy="post-comment">
       <StyledPostCommentUserAvatar>
         <Avatar
           size="small"

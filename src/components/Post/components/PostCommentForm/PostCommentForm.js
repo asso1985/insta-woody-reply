@@ -9,7 +9,7 @@ import {
 
 import { addComment } from "../../../../actions/comments";
 
-const PostCommentForm = ({ comments, addComment }) => {
+const PostCommentForm = ({ comments, addComment, forwardRef }) => {
   const [commentText, SetCommentText] = useState("");
   const { isLoading } = comments;
   const canSubmit = commentText.length > 0 && !isLoading;
@@ -48,7 +48,11 @@ const PostCommentForm = ({ comments, addComment }) => {
   }, [isLoading]);
 
   return (
-    <StyledPostForm ref={postForm} onSubmit={handleOnSubmitComment}>
+    <StyledPostForm
+      ref={postForm}
+      onSubmit={handleOnSubmitComment}
+      data-cy="post-comment-form"
+    >
       <StyledPostFormTextArea
         aria-label="Add a comment..."
         placeholder="Add a comment..."
@@ -58,6 +62,7 @@ const PostCommentForm = ({ comments, addComment }) => {
         value={commentText}
         onKeyDown={hanelOnKeyDown}
         onChange={handleOnCommentChange}
+        ref={forwardRef}
       ></StyledPostFormTextArea>
       <StyledPostFormButton disabled={!canSubmit} type="submit">
         Publish

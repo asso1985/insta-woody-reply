@@ -8,7 +8,10 @@ const PostComments = ({ comments }) => {
   return (
     <StyledPostComments>
       {comments.map((comment) => (
-        <PostComment key={comment.id} comment={comment} />
+        <PostComment
+          key={comment.id}
+          comment={comment}
+        />
       ))}
     </StyledPostComments>
   );
