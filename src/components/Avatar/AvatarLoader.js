@@ -2,9 +2,9 @@ import React from "react";
 import ContentLoader from "react-content-loader";
 
 const SIZE_MAP = {
-  thin: "20px",
-  small: "32px",
-  standard: "50px",
+  thin: "20",
+  small: "32",
+  standard: "50",
 };
 
 const ItemPicLoader = ({ size }) => {
