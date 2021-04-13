@@ -5,6 +5,8 @@ import { AppContainer, Main, Section, PostArea, SideArea } from "./layout";
 import { Header } from "./components";
 import { PostContainer, GuestContainer } from "./containers";
 
+console.log("PR 1");
+
 const App = ({ store }) => (
   <Provider store={store}>
     <AppContainer>
